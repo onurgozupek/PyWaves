@@ -50,7 +50,7 @@ class ParallelPyWaves(object):
         self.CHAIN = 'mainnet'
         self.CHAIN_ID = 'W'
         self.MATCHER = 'https://matcher.waves.exchange'
-        self.MATCHER_PUBLICKEY = ''
+        self.MATCHER_PUBLICKEY = '9cpfKN9suPNvfeUNphzxXMjcnn974eme8ZhWUjaktzU5'
 
         self.DATAFEED = 'http://marketdata.wavesplatform.com'
 

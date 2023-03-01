@@ -1,4 +1,4 @@
-import pywaves
+import PyWaves as pywaves
 import logging
 
 class Asset(object):

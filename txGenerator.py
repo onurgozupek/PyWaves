@@ -1,5 +1,5 @@
-import pywaves
-import pywaves.crypto as crypto
+import PyWaves as pywaves
+import PyWaves.crypto as crypto
 import time
 import json
 import base64

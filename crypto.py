@@ -1,5 +1,5 @@
 import hashlib
-import pyblake2
+import hashlib as pyblake2
 import axolotl_curve25519 as curve
 import base58
 import os

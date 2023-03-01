@@ -639,22 +639,31 @@ class Address(object):
             return self.pywaves.Order(id, assetPair, self)
 
     def tradableBalance(self, assetPair):
-        try:
+        try:       
             req = self.pywaves.wrapper('/matcher/orderbook/%s/%s/tradableBalance/%s' % (
             self.pywaves.DEFAULT_CURRENCY if assetPair.asset1.assetId == '' else assetPair.asset1.assetId,
             self.pywaves.DEFAULT_CURRENCY if assetPair.asset2.assetId == '' else assetPair.asset2.assetId,
             self.address), host=self.pywaves.MATCHER)
+            if assetPair.asset2.assetId == '':
+                wb = req['WAVES']
+            else:
+                wb = 0
             if self.pywaves.OFFLINE:
                 return req
             amountBalance = req[
                 self.pywaves.DEFAULT_CURRENCY if assetPair.asset1.assetId == '' else assetPair.asset1.assetId]
             priceBalance = req[
                 self.pywaves.DEFAULT_CURRENCY if assetPair.asset2.assetId == '' else assetPair.asset2.assetId]
+            priceBalance = req[self.pywaves.DEFAULT_CURRENCY if assetPair.asset2.assetId == '' else assetPair.asset2.assetId]
+            return amountBalance, priceBalance
         except:
             amountBalance = 0
             priceBalance = 0
         if not self.pywaves.OFFLINE:
-            return amountBalance, priceBalance
+            if priceBalance == 0 and wb > 0:
+                return amountBalance, wb
+            else:
+                return amountBalance, priceBalance
 
     def lease(self, recipient, amount, txFee=pywaves.DEFAULT_LEASE_FEE, timestamp=0):
         if not self.privateKey:

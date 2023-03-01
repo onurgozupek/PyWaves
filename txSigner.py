@@ -1,8 +1,8 @@
 import base58
 import base64
 import struct
-import pywaves as pw
-import pywaves.crypto as crypto
+import PyWaves as pw
+import PyWaves.crypto as crypto
 
 from .protobuf.waves import transaction_pb2
 from .protobuf.waves import recipient_pb2

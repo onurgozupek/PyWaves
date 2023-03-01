@@ -1,5 +1,5 @@
 import requests
-import pywaves as pw
+import PyWaves as pw
 
 class Contract(object):
 

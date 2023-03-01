@@ -1,4 +1,4 @@
-import pywaves
+import PyWaves as pywaves
 import requests
 import math
 

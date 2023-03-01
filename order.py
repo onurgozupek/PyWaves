@@ -1,4 +1,4 @@
-import pywaves
+import PyWaves as pywaves
 
 class Order(object):
     def __init__(self, orderId, assetPair, address = '', pywaves=pywaves):
