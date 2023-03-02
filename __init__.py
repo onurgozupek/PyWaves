@@ -147,7 +147,7 @@ def wrapper(api, postData='', host='', headers=''):
     if not host:
         host = NODE
     if postData:
-        req = requests.post('%s%s' % (host, api), data=postData, headers={'content-type': 'application/json'}, timeout=5).json()
+        req = requests.post('%s%s' % (host, api), data=postData, headers={'content-type': 'application/json'}, timeout=(5,10)).json()
     else:
         req = requests.get('%s%s' % (host, api), headers=headers, timeout=5).json()
     return req
