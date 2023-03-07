@@ -639,7 +639,8 @@ class Address(object):
             return self.pywaves.Order(id, assetPair, self)
 
     def tradableBalance(self, assetPair):
-        try:       
+        wb = 0
+        try:
             req = self.pywaves.wrapper('/matcher/orderbook/%s/%s/tradableBalance/%s' % (
             self.pywaves.DEFAULT_CURRENCY if assetPair.asset1.assetId == '' else assetPair.asset1.assetId,
             self.pywaves.DEFAULT_CURRENCY if assetPair.asset2.assetId == '' else assetPair.asset2.assetId,
@@ -659,6 +660,7 @@ class Address(object):
         except:
             amountBalance = 0
             priceBalance = 0
+            wb = 0
         if not self.pywaves.OFFLINE:
             if priceBalance == 0 and wb > 0:
                 return amountBalance, wb
