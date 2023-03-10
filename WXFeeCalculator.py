@@ -9,7 +9,7 @@ class WXFeeCalculator(object):
     #baseFee = 1000000
 
     def __init__(self):
-        self.settings = requests.get(pywaves.MATCHER + '/matcher/settings').json()
+        self.settings = requests.get(pywaves.MATCHER + '/matcher/settings', timeout=(5,10)).json()
         self.matcher = pywaves.MATCHER
         self.node = pywaves.NODE
         self.baseFee = self.settings['orderFee']['composite']['default']['dynamic']['baseFee']
@@ -21,7 +21,7 @@ class WXFeeCalculator(object):
         if assetId == pywaves.DEFAULT_CURRENCY: #'WAVES':
             return 8
         else:
-            assetInfo = requests.get(self.node + '/assets/details/' + assetId).json()
+            assetInfo = requests.get(self.node + '/assets/details/' + assetId, timeout=(5,10)).json()
 
             return assetInfo['decimals']
 

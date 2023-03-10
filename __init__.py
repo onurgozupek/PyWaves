@@ -149,7 +149,7 @@ def wrapper(api, postData='', host='', headers=''):
     if postData:
         req = requests.post('%s%s' % (host, api), data=postData, headers={'content-type': 'application/json'}, timeout=(5,10)).json()
     else:
-        req = requests.get('%s%s' % (host, api), headers=headers, timeout=5).json()
+        req = requests.get('%s%s' % (host, api), headers=headers, timeout=(5,10)).json()
     return req
 
 def height():
